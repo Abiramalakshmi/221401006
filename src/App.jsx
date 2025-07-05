@@ -1,9 +1,17 @@
 import React, { useState } from "react";
-import "./App.css"; 
+import "./App.css";
 
 function App() {
   const [originalUrl, setOriginalUrl] = useState("");
   const [shortUrl, setShortUrl] = useState("");
+
+  
+  const handleShorten = () => {
+    if (!originalUrl.trim().startsWith("http")) {
+      alert("Please enter a valid URL starting with http or https");
+      return;
+    }
+  };
 
   return (
     <div className="container">
@@ -21,7 +29,7 @@ function App() {
       {shortUrl && (
         <div className="result">
           <p>Shortened URL:</p>
-          <a href={shortUrl} target="_blank">
+          <a href={shortUrl} target="_blank" rel="noopener noreferrer">
             {shortUrl}
           </a>
         </div>
